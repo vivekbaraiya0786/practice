@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "556819276060",
+    "project_id": "abc-ad-176fd",
+    "storage_bucket": "abc-ad-176fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556819276060:android:fa79fa4c04bfb92ef55ad9",
+        "android_client_info": {
+          "package_name": "com.example.techinal_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIGQlBooqM_3lOhTQS1j4K-VHjbzCDR6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
