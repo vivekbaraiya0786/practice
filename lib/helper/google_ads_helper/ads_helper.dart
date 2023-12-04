@@ -10,9 +10,9 @@ class Ad_Helper {
   loadBannerAd() {
     String AdUnitId = "ca-app-pub-3940256099942544/6300978111";
     bannerAd = BannerAd(
-      size: AdSize.largeBanner,
+      size: AdSize.banner,
       adUnitId: AdUnitId,
-      request: const AdRequest(
+      request:  AdRequest(
           // contentUrl:
           // extras:
           // httpTimeoutMillis:
@@ -22,7 +22,13 @@ class Ad_Helper {
           // nonPersonalizedAds:
           ),
       listener: BannerAdListener(
-        // onAdLoaded: (ad) {},
+        onAdLoaded: (ad) {
+          bannerAd = ad as BannerAd?;
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
         // onAdClosed: (ad) {},
         // onAdClicked: (ad) {},
         // onAdFailedToLoad: (ad, error) {},
@@ -75,4 +81,6 @@ class Ad_Helper {
         ),
         orientation: AppOpenAd.orientationPortrait);
   }
+
+
 }

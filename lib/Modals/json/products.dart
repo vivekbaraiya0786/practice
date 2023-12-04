@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Product {
   List<ProductsDatum> productsData;
 
@@ -7,12 +5,10 @@ class Product {
     required this.productsData,
   });
 
-
-
   factory Product.fromJson({required Map<String, dynamic> json}) => Product(
-    productsData: List<ProductsDatum>.from(json["ProductsData"].map((x) => ProductsDatum.fromJson(json: x))),
-  );
-
+        productsData: List<ProductsDatum>.from(
+            json["ProductsData"].map((x) => ProductsDatum.fromJson(json: x))),
+      );
 }
 
 class ProductsDatum {
@@ -32,15 +28,13 @@ class ProductsDatum {
     this.ratings,
   });
 
-
-
-  factory ProductsDatum.fromJson({required Map<String, dynamic> json}) => ProductsDatum(
-    id: json["Id"],
-    category: json["Category"],
-    name: json["Name"],
-    image: json["Image"],
-    price: json["Price"],
-    ratings: json["Ratings"],
-  );
-
+  factory ProductsDatum.fromJson({required Map<String, dynamic> json}) =>
+      ProductsDatum(
+        id: json["Id"],
+        category: json["Category"],
+        name: json["Name"],
+        image: json["Image"],
+        price: json["Price"],
+        ratings: json["Ratings"],
+      );
 }

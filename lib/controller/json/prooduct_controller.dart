@@ -13,8 +13,10 @@ class Product_Provider extends ChangeNotifier{
     String data = await rootBundle.loadString("assets/json/product.json");
     // print("data : ${data}");
     Map decodedata = jsonDecode(data);
-    // print(" decode ${decodedata}");
-    // product_modal.product = decodedata.map((e) => Product.fromJson(json: e)).toList();
+    List productData = decodedata['ProductsData'];
+
+    product_modal.product = productData.map((e) => Product.fromJson(json: e)).toList();
+
     notifyListeners();
   }
 }

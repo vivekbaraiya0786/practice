@@ -12,10 +12,8 @@ class News_home extends StatefulWidget {
 }
 
 class _News_homeState extends State<News_home> {
-  News? news;
-  TextEditingController  countyController = TextEditingController();
-  TextEditingController  categoryController = TextEditingController();
-
+  TextEditingController countyController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,64 +37,64 @@ class _News_homeState extends State<News_home> {
             print(newsdata);
             return (newsdata == null)
                 ? const Center(
-              child: Text("No Data available"),
-            )
+                    child: Text("No Data available"),
+                  )
                 : Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  TextField(
-                      controller: countyController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter country",
-                      ),
-                      onSubmitted: (value) {
-                        if (value.isNotEmpty) {
-                          // print("===========");
-                          // print(value);
-                          // print("===========");
-                          Provider.of<NewsProvider>(context,
-                              listen: false)
-                              .newlocation(value);
-                        }
-                        countyController.clear();
-                      }),
-                  const SizedBox(height: 15),
-                  TextField(
-                      controller: categoryController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter category",
-                      ),
-                      onSubmitted: (value) {
-                        if (value.isNotEmpty) {
-                          // print("===========");
-                          // print(value);
-                          // print("===========");
-                          Provider.of<NewsProvider>(context,
-                              listen: false)
-                              .newcategory(value);
-                        }
-                        categoryController.clear();
-                      }),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: newsdata.articles.length,
-                      itemBuilder: (context, index) {
-                        Article? article = newsdata.articles[index];
-                        Source? source = newsdata.articles[index].source;
-                        return ListTile(
-                          title: Text(article.title),
-                          subtitle: Text("${source.name}"),
-                          // Add more UI elements here as needed...
-                        );
-                      },
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        TextField(
+                            controller: countyController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter country",
+                            ),
+                            onSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                // print("===========");
+                                // print(value);
+                                // print("===========");
+                                Provider.of<NewsProvider>(context,
+                                        listen: false)
+                                    .newlocation(value);
+                              }
+                              countyController.clear();
+                            }),
+                        const SizedBox(height: 15),
+                        TextField(
+                            controller: categoryController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter category",
+                            ),
+                            onSubmitted: (value) {
+                              if (value.isNotEmpty) {
+                                // print("===========");
+                                // print(value);
+                                // print("===========");
+                                Provider.of<NewsProvider>(context,
+                                        listen: false)
+                                    .newcategory(value);
+                              }
+                              categoryController.clear();
+                            }),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: newsdata.articles.length,
+                            itemBuilder: (context, index) {
+                              Article? article = newsdata.articles[index];
+                              Source? source = newsdata.articles[index].source;
+                              return ListTile(
+                                title: Text(article.title),
+                                subtitle: Text("${source.name}"),
+                                // Add more UI elements here as needed...
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            );
+                  );
           }
           return const Center(
             child: CircularProgressIndicator(),

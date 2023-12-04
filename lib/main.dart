@@ -1,9 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:techinal_practice/controller/api/newscontroller.dart';
 import 'package:techinal_practice/controller/api/weather_provider.dart';
 import 'package:techinal_practice/controller/json/album_provider.dart';
-import 'package:get/get.dart';
 import 'package:techinal_practice/controller/json/pratice_controller.dart';
 import 'package:techinal_practice/firebase_options.dart';
 import 'package:techinal_practice/views/api/newshome.dart';
@@ -17,12 +18,11 @@ import 'package:techinal_practice/views/json/pratice_page.dart';
 import 'package:techinal_practice/views/json/product_home.dart';
 import 'package:techinal_practice/views/json/sholak_page.dart';
 import 'package:techinal_practice/views/weather_api/home_page.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'controller/json/chepter_provider.dart';
 import 'controller/json/prooduct_controller.dart';
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -53,7 +53,7 @@ void main() async{
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: "/Ad_Page",
+          initialRoute: "/weather_home",
           getPages: [
             GetPage(
               name: "/",
@@ -74,20 +74,24 @@ void main() async{
             GetPage(
               name: "/News_home",
               page: () => const News_home(),
-            ),GetPage(
+            ),
+            GetPage(
               name: "/weather_home",
               page: () => const weather_home(),
-            ),GetPage(
+            ),
+            GetPage(
               name: "/homepage",
               page: () => const homepage(),
             ),
             GetPage(
               name: "/fetchdata",
               page: () => const fetchdata(),
-            ),GetPage(
+            ),
+            GetPage(
               name: "/Pratice_page",
               page: () => const Pratice_page(),
-            ),GetPage(
+            ),
+            GetPage(
               name: "/Product_home",
               page: () => const Product_home(),
             ),

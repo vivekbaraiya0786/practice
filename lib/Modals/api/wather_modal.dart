@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+// import 'dart:convert';
 class WeatherModal {
   Map location;
   Map current;
@@ -19,7 +18,7 @@ class WeatherModal {
   int time_epoch;
   Map condition1;
   String text1;
-
+  String icon1;
 
   WeatherModal({
     required this.location,
@@ -40,10 +39,7 @@ class WeatherModal {
     required this.time_epoch,
     required this.condition1,
     required this.text1,
-
-
-
-
+    required this.icon1,
   });
 
   factory WeatherModal.fromJson({required Map json}) {
@@ -66,13 +62,15 @@ class WeatherModal {
       time_epoch: json['forecast']['forecastday'][i]['hour'][i]['time_epoch'],
       condition1: json['forecast']['forecastday'][i]['hour'][i]['condition'],
       text1: json['forecast']['forecastday'][i]['hour'][i]['condition']['text'],
-
+      icon1: json['forecast']['forecastday'][i]['hour'][i]['condition']['icon'],
     );
   }
-
-
 }
+
 int i = 0;
+//
+// //
+// //
 // class WeatherModal {
 //   Location location;
 //   Current current;
@@ -88,14 +86,13 @@ int i = 0;
 //
 //   // factory WeatherModal.fromRawJson(String str) => WeatherModal.fromJson(json.decode(str));
 //
-//   factory WeatherModal.fromJson({required Map<String, dynamic> json}) => WeatherModal(
-//     location: Location.fromJson(json: json["location"]),
-//     current: Current.fromJson( json: json["current"]),
-//     forecast: Forecast.fromJson(json: json["forecast"]),
-//     alerts: Alerts.fromJson(json: json["alerts"]),
-//   );
-//
-//
+//   factory WeatherModal.fromJson({required Map<String, dynamic> json}) =>
+//       WeatherModal(
+//         location: Location.fromJson(json: json["location"]),
+//         current: Current.fromJson(json: json["current"]),
+//         forecast: Forecast.fromJson(json: json["forecast"]),
+//         alerts: Alerts.fromJson(json: json["alerts"]),
+//       );
 // }
 //
 // class Alerts {
@@ -107,11 +104,9 @@ int i = 0;
 //
 //   // factory Alerts.fromRawJson(String str) => Alerts.fromJson(json.decode(str));
 //
-//
 //   factory Alerts.fromJson({required Map<String, dynamic> json}) => Alerts(
-//     alert: List<dynamic>.from(json["alert"].map((x) => x)),
-//   );
-//
+//         alert: List<dynamic>.from(json["alert"].map((x) => x)),
+//       );
 // }
 //
 // class Current {
@@ -169,34 +164,33 @@ int i = 0;
 //
 //   // factory Current.fromRawJson(String str) => Current.fromJson(json.decode(str));
 //
-//
 //   factory Current.fromJson({required Map<String, dynamic> json}) => Current(
-//     lastUpdatedEpoch: json["last_updated_epoch"],
-//     lastUpdated: json["last_updated"],
-//     tempC: json["temp_c"],
-//     tempF: json["temp_f"],
-//     isDay: json["is_day"],
-//     condition: Condition.fromJson(json: json["condition"]),
-//     windMph: json["wind_mph"]?.toDouble(),
-//     windKph: json["wind_kph"],
-//     windDegree: json["wind_degree"],
-//     windDir: json["wind_dir"],
-//     pressureMb: json["pressure_mb"],
-//     pressureIn: json["pressure_in"]?.toDouble(),
-//     precipMm: json["precip_mm"]?.toDouble(),
-//     precipIn: json["precip_in"],
-//     humidity: json["humidity"],
-//     cloud: json["cloud"],
-//     feelslikeC: json["feelslike_c"]?.toDouble(),
-//     feelslikeF: json["feelslike_f"]?.toDouble(),
-//     visKm: json["vis_km"],
-//     visMiles: json["vis_miles"],
-//     uv: json["uv"],
-//     gustMph: json["gust_mph"]?.toDouble(),
-//     gustKph: json["gust_kph"]?.toDouble(),
-//     airQuality: Map.from(json["air_quality"]).map((k, v) => MapEntry<String, double>(k, v?.toDouble())),
-//   );
-//
+//         lastUpdatedEpoch: json["last_updated_epoch"],
+//         lastUpdated: json["last_updated"],
+//         tempC: json["temp_c"],
+//         tempF: json["temp_f"],
+//         isDay: json["is_day"],
+//         condition: Condition.fromJson(json: json["condition"]),
+//         windMph: json["wind_mph"]?.toDouble(),
+//         windKph: json["wind_kph"],
+//         windDegree: json["wind_degree"],
+//         windDir: json["wind_dir"],
+//         pressureMb: json["pressure_mb"],
+//         pressureIn: json["pressure_in"]?.toDouble(),
+//         precipMm: json["precip_mm"]?.toDouble(),
+//         precipIn: json["precip_in"],
+//         humidity: json["humidity"],
+//         cloud: json["cloud"],
+//         feelslikeC: json["feelslike_c"]?.toDouble(),
+//         feelslikeF: json["feelslike_f"]?.toDouble(),
+//         visKm: json["vis_km"],
+//         visMiles: json["vis_miles"],
+//         uv: json["uv"],
+//         gustMph: json["gust_mph"]?.toDouble(),
+//         gustKph: json["gust_kph"]?.toDouble(),
+//         airQuality: Map.from(json["air_quality"])
+//             .map((k, v) => MapEntry<String, double>(k, v?.toDouble())),
+//       );
 // }
 //
 // class Condition {
@@ -212,13 +206,11 @@ int i = 0;
 //
 //   // factory Condition.fromRawJson(String str) => Condition.fromJson(json.decode(str));
 //
-//
 //   factory Condition.fromJson({required Map<String, dynamic> json}) => Condition(
-//     text: json["text"],
-//     icon: json["icon"],
-//     code: json["code"],
-//   );
-//
+//         text: json["text"],
+//         icon: json["icon"],
+//         code: json["code"],
+//       );
 // }
 //
 // class Forecast {
@@ -230,11 +222,10 @@ int i = 0;
 //
 //   // factory Forecast.fromRawJson(String str) => Forecast.fromJson(json.decode(str));
 //
-//
 //   factory Forecast.fromJson({required Map<String, dynamic> json}) => Forecast(
-//     forecastday: List<Forecastday>.from(json["forecastday"].map((x) => Forecastday.fromJson(json: x))),
-//   );
-//
+//         forecastday: List<Forecastday>.from(
+//             json["forecastday"].map((x) => Forecastday.fromJson(json: x))),
+//       );
 // }
 //
 // class Forecastday {
@@ -254,14 +245,14 @@ int i = 0;
 //
 //   // factory Forecastday.fromRawJson(String str) => Forecastday.fromJson(json.decode(str));
 //
-//   factory Forecastday.fromJson({required Map<String, dynamic> json}) => Forecastday(
-//     date: DateTime.parse(json["date"]),
-//     dateEpoch: json["date_epoch"],
-//     day: Day.fromJson(json: json["day"]),
-//     astro: Astro.fromJson(json["astro"]),
-//     hour: List<Hour>.from(json["hour"].map((x) => Hour.fromJson(x))),
-//   );
-//
+//   factory Forecastday.fromJson({required Map<String, dynamic> json}) =>
+//       Forecastday(
+//         date: DateTime.parse(json["date"]),
+//         dateEpoch: json["date_epoch"],
+//         day: Day.fromJson(json: json["day"]),
+//         astro: Astro.fromJson(json["astro"]),
+//         hour: List<Hour>.from(json["hour"].map((x) => Hour.fromJson(x))),
+//       );
 // }
 //
 // class Astro {
@@ -290,26 +281,26 @@ int i = 0;
 //   String toRawJson() => json.encode(toJson());
 //
 //   factory Astro.fromJson(Map<String, dynamic> json) => Astro(
-//     sunrise: json["sunrise"],
-//     sunset: json["sunset"],
-//     moonrise: json["moonrise"],
-//     moonset: json["moonset"],
-//     moonPhase: json["moon_phase"],
-//     moonIllumination: json["moon_illumination"],
-//     isMoonUp: json["is_moon_up"],
-//     isSunUp: json["is_sun_up"],
-//   );
+//         sunrise: json["sunrise"],
+//         sunset: json["sunset"],
+//         moonrise: json["moonrise"],
+//         moonset: json["moonset"],
+//         moonPhase: json["moon_phase"],
+//         moonIllumination: json["moon_illumination"],
+//         isMoonUp: json["is_moon_up"],
+//         isSunUp: json["is_sun_up"],
+//       );
 //
 //   Map<String, dynamic> toJson() => {
-//     "sunrise": sunrise,
-//     "sunset": sunset,
-//     "moonrise": moonrise,
-//     "moonset": moonset,
-//     "moon_phase": moonPhase,
-//     "moon_illumination": moonIllumination,
-//     "is_moon_up": isMoonUp,
-//     "is_sun_up": isSunUp,
-//   };
+//         "sunrise": sunrise,
+//         "sunset": sunset,
+//         "moonrise": moonrise,
+//         "moonset": moonset,
+//         "moon_phase": moonPhase,
+//         "moon_illumination": moonIllumination,
+//         "is_moon_up": isMoonUp,
+//         "is_sun_up": isSunUp,
+//       };
 // }
 //
 // class Day {
@@ -359,30 +350,28 @@ int i = 0;
 //
 //   // factory Day.fromRawJson(String str) => Day.fromJson(json.decode(str));
 //
-//
 //   factory Day.fromJson({required Map<String, dynamic> json}) => Day(
-//     maxtempC: json["maxtemp_c"]?.toDouble(),
-//     maxtempF: json["maxtemp_f"]?.toDouble(),
-//     mintempC: json["mintemp_c"]?.toDouble(),
-//     mintempF: json["mintemp_f"]?.toDouble(),
-//     avgtempC: json["avgtemp_c"]?.toDouble(),
-//     avgtempF: json["avgtemp_f"]?.toDouble(),
-//     maxwindMph: json["maxwind_mph"]?.toDouble(),
-//     maxwindKph: json["maxwind_kph"]?.toDouble(),
-//     totalprecipMm: json["totalprecip_mm"]?.toDouble(),
-//     totalprecipIn: json["totalprecip_in"]?.toDouble(),
-//     totalsnowCm: json["totalsnow_cm"],
-//     avgvisKm: json["avgvis_km"]?.toDouble(),
-//     avgvisMiles: json["avgvis_miles"],
-//     avghumidity: json["avghumidity"],
-//     dailyWillItRain: json["daily_will_it_rain"],
-//     dailyChanceOfRain: json["daily_chance_of_rain"],
-//     dailyWillItSnow: json["daily_will_it_snow"],
-//     dailyChanceOfSnow: json["daily_chance_of_snow"],
-//     condition: Condition.fromJson(json: json["condition"]),
-//     uv: json["uv"],
-//   );
-//
+//         maxtempC: json["maxtemp_c"]?.toDouble(),
+//         maxtempF: json["maxtemp_f"]?.toDouble(),
+//         mintempC: json["mintemp_c"]?.toDouble(),
+//         mintempF: json["mintemp_f"]?.toDouble(),
+//         avgtempC: json["avgtemp_c"]?.toDouble(),
+//         avgtempF: json["avgtemp_f"]?.toDouble(),
+//         maxwindMph: json["maxwind_mph"]?.toDouble(),
+//         maxwindKph: json["maxwind_kph"]?.toDouble(),
+//         totalprecipMm: json["totalprecip_mm"]?.toDouble(),
+//         totalprecipIn: json["totalprecip_in"]?.toDouble(),
+//         totalsnowCm: json["totalsnow_cm"],
+//         avgvisKm: json["avgvis_km"]?.toDouble(),
+//         avgvisMiles: json["avgvis_miles"],
+//         avghumidity: json["avghumidity"],
+//         dailyWillItRain: json["daily_will_it_rain"],
+//         dailyChanceOfRain: json["daily_chance_of_rain"],
+//         dailyWillItSnow: json["daily_will_it_snow"],
+//         dailyChanceOfSnow: json["daily_chance_of_snow"],
+//         condition: Condition.fromJson(json: json["condition"]),
+//         uv: json["uv"],
+//       );
 // }
 //
 // class Hour {
@@ -461,76 +450,76 @@ int i = 0;
 //   String toRawJson() => json.encode(toJson());
 //
 //   factory Hour.fromJson(Map<String, dynamic> json) => Hour(
-//     timeEpoch: json["time_epoch"],
-//     time: json["time"],
-//     tempC: json["temp_c"]?.toDouble(),
-//     tempF: json["temp_f"]?.toDouble(),
-//     isDay: json["is_day"],
-//     condition: Condition.fromJson(json: json["condition"]),
-//     windMph: json["wind_mph"]?.toDouble(),
-//     windKph: json["wind_kph"]?.toDouble(),
-//     windDegree: json["wind_degree"],
-//     windDir: json["wind_dir"],
-//     pressureMb: json["pressure_mb"],
-//     pressureIn: json["pressure_in"]?.toDouble(),
-//     precipMm: json["precip_mm"]?.toDouble(),
-//     precipIn: json["precip_in"]?.toDouble(),
-//     humidity: json["humidity"],
-//     cloud: json["cloud"],
-//     feelslikeC: json["feelslike_c"]?.toDouble(),
-//     feelslikeF: json["feelslike_f"]?.toDouble(),
-//     windchillC: json["windchill_c"]?.toDouble(),
-//     windchillF: json["windchill_f"]?.toDouble(),
-//     heatindexC: json["heatindex_c"]?.toDouble(),
-//     heatindexF: json["heatindex_f"]?.toDouble(),
-//     dewpointC: json["dewpoint_c"]?.toDouble(),
-//     dewpointF: json["dewpoint_f"]?.toDouble(),
-//     willItRain: json["will_it_rain"],
-//     chanceOfRain: json["chance_of_rain"],
-//     willItSnow: json["will_it_snow"],
-//     chanceOfSnow: json["chance_of_snow"],
-//     visKm: json["vis_km"],
-//     visMiles: json["vis_miles"],
-//     gustMph: json["gust_mph"]?.toDouble(),
-//     gustKph: json["gust_kph"]?.toDouble(),
-//     uv: json["uv"],
-//   );
+//         timeEpoch: json["time_epoch"],
+//         time: json["time"],
+//         tempC: json["temp_c"]?.toDouble(),
+//         tempF: json["temp_f"]?.toDouble(),
+//         isDay: json["is_day"],
+//         condition: Condition.fromJson(json: json["condition"]),
+//         windMph: json["wind_mph"]?.toDouble(),
+//         windKph: json["wind_kph"]?.toDouble(),
+//         windDegree: json["wind_degree"],
+//         windDir: json["wind_dir"],
+//         pressureMb: json["pressure_mb"],
+//         pressureIn: json["pressure_in"]?.toDouble(),
+//         precipMm: json["precip_mm"]?.toDouble(),
+//         precipIn: json["precip_in"]?.toDouble(),
+//         humidity: json["humidity"],
+//         cloud: json["cloud"],
+//         feelslikeC: json["feelslike_c"]?.toDouble(),
+//         feelslikeF: json["feelslike_f"]?.toDouble(),
+//         windchillC: json["windchill_c"]?.toDouble(),
+//         windchillF: json["windchill_f"]?.toDouble(),
+//         heatindexC: json["heatindex_c"]?.toDouble(),
+//         heatindexF: json["heatindex_f"]?.toDouble(),
+//         dewpointC: json["dewpoint_c"]?.toDouble(),
+//         dewpointF: json["dewpoint_f"]?.toDouble(),
+//         willItRain: json["will_it_rain"],
+//         chanceOfRain: json["chance_of_rain"],
+//         willItSnow: json["will_it_snow"],
+//         chanceOfSnow: json["chance_of_snow"],
+//         visKm: json["vis_km"],
+//         visMiles: json["vis_miles"],
+//         gustMph: json["gust_mph"]?.toDouble(),
+//         gustKph: json["gust_kph"]?.toDouble(),
+//         uv: json["uv"],
+//       );
 //
 //   Map<String, dynamic> toJson() => {
-//     "time_epoch": timeEpoch,
-//     "time": time,
-//     "temp_c": tempC,
-//     "temp_f": tempF,
-//     "is_day": isDay,
-//     "condition": condition,
-//     "wind_mph": windMph,
-//     "wind_kph": windKph,
-//     "wind_degree": windDegree,
-//     "wind_dir": windDir,
-//     "pressure_mb": pressureMb,
-//     "pressure_in": pressureIn,
-//     "precip_mm": precipMm,
-//     "precip_in": precipIn,
-//     "humidity": humidity,
-//     "cloud": cloud,
-//     "feelslike_c": feelslikeC,
-//     "feelslike_f": feelslikeF,
-//     "windchill_c": windchillC,
-//     "windchill_f": windchillF,
-//     "heatindex_c": heatindexC,
-//     "heatindex_f": heatindexF,
-//     "dewpoint_c": dewpointC,
-//     "dewpoint_f": dewpointF,
-//     "will_it_rain": willItRain,
-//     "chance_of_rain": chanceOfRain,
-//     "will_it_snow": willItSnow,
-//     "chance_of_snow": chanceOfSnow,
-//     "vis_km": visKm,
-//     "vis_miles": visMiles,
-//     "gust_mph": gustMph,
-//     "gust_kph": gustKph,
-//     "uv": uv,
-//   };
+//         "time_epoch": timeEpoch,
+//         "time": time,
+//         "temp_c": tempC,
+//         "temp_f": tempF,
+//         "is_day": isDay,
+//         "condition": condition,
+//         "wind_mph": windMph,
+//         "wind_kph": windKph,
+//         "wind_degree": windDegree,
+//         "wind_dir": windDir,
+//         "pressure_mb": pressureMb,
+//         "pressure_in": pressureIn,
+//         "precip_mm": precipMm,
+//         "precip_in": precipIn,
+//         "humidity": humidity,
+//         "cloud": cloud,
+//         "feelslike_c": feelslikeC,
+//         "feelslike_f": feelslikeF,
+//         "windchill_c": windchillC,
+//         "windchill_f": windchillF,
+//         "heatindex_c": heatindexC,
+//         "heatindex_f": heatindexF,
+//         "dewpoint_c": dewpointC,
+//         "dewpoint_f": dewpointF,
+//         "will_it_rain": willItRain,
+//         "chance_of_rain": chanceOfRain,
+//         "will_it_snow": willItSnow,
+//         "chance_of_snow": chanceOfSnow,
+//         "vis_km": visKm,
+//         "vis_miles": visMiles,
+//         "gust_mph": gustMph,
+//         "gust_kph": gustKph,
+//         "uv": uv,
+//       };
 // }
 //
 // class Location {
@@ -556,16 +545,14 @@ int i = 0;
 //
 //   // factory Location.fromRawJson(String str) => Location.fromJson(json.decode(str));
 //
-//
 //   factory Location.fromJson({required Map<String, dynamic> json}) => Location(
-//     name: json["name"],
-//     region: json["region"],
-//     country: json["country"],
-//     lat: json["lat"]?.toDouble(),
-//     lon: json["lon"]?.toDouble(),
-//     tzId: json["tz_id"],
-//     localtimeEpoch: json["localtime_epoch"],
-//     localtime: json["localtime"],
-//   );
-//
+//         name: json["name"],
+//         region: json["region"],
+//         country: json["country"],
+//         lat: json["lat"]?.toDouble(),
+//         lon: json["lon"]?.toDouble(),
+//         tzId: json["tz_id"],
+//         localtimeEpoch: json["localtime_epoch"],
+//         localtime: json["localtime"],
+//       );
 // }

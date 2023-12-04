@@ -29,15 +29,15 @@ class _Ad_PageState extends State<Ad_Page> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Container(
-            //   height: 100,
-            //   width: Ad_Helper.ad_helper.bannerAd!.size.width.toDouble(),
-            //   color: Colors.red,
-            //   child: AdWidget(ad: Ad_Helper.ad_helper.bannerAd!),
-            // ),
-            ElevatedButton(onPressed: () {
-              Ad_Helper.ad_helper.interstitialAd!.show();
-            }, child: Text("interstitialAd"))
+            Container(
+              height: 150,
+              // width: Ad_Helper.ad_helper.bannerAd!.size.width.toDouble(),
+              color: Colors.red,
+              child: AdWidget(ad: Ad_Helper.ad_helper.bannerAd!),
+            ),
+            // ElevatedButton(onPressed: () {
+            //   Ad_Helper.ad_helper.interstitialAd!.show();
+            // }, child: Text("interstitialAd"))
           ],
         ),
       ),
